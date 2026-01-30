@@ -3,25 +3,26 @@
 % Encoding and standard fonts (ATS-friendly)
 \usepackage{fontspec}
 
-% Font fallback system - try multiple fonts for compatibility
-\IfFontExistsTF{Noto Sans Arabic}{
-  \setmainfont{Noto Sans Arabic}
-  \setsansfont{Noto Sans Arabic}
+% Font fallback system - cross-platform Arabic font
+% DejaVu Sans has excellent Arabic support and is available on macOS, Ubuntu, and Windows
+\IfFontExistsTF{DejaVu Sans}{
+  \setmainfont{DejaVu Sans}
+  \setsansfont{DejaVu Sans}
 }{
-  \IfFontExistsTF{Geeza Pro}{
-    \setmainfont{Geeza Pro}
-    \setsansfont{Geeza Pro}
+  \IfFontExistsTF{Noto Sans Arabic}{
+    \setmainfont{Noto Sans Arabic}
+    \setsansfont{Noto Sans Arabic}
   }{
     \IfFontExistsTF{Arial Unicode MS}{
       \setmainfont{Arial Unicode MS}
       \setsansfont{Arial Unicode MS}
     }{
-      \IfFontExistsTF{DejaVu Sans}{
-        \setmainfont{DejaVu Sans}
-        \setsansfont{DejaVu Sans}
-      }{
+      \IfFontExistsTF{FreeSans}{
         \setmainfont{FreeSans}
         \setsansfont{FreeSans}
+      }{
+        \setmainfont{Liberation Sans}
+        \setsansfont{Liberation Sans}
       }
     }
   }

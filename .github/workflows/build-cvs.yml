@@ -98,7 +98,7 @@ jobs:
               run: |
                   sudo apt-get update
                   sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-fonts-extra texlive-lang-arabic
-                  sudo apt-get install -y fonts-noto fonts-noto-naskh-arabic fonts-liberation fonts-arabeyes
+                  sudo apt-get install -y fonts-noto fonts-liberation fonts-arabeyes fonts-sil-scheherazade
                   sudo fc-cache -fv
 
             - name: Create output directory
