@@ -1,0 +1,271 @@
+\documentclass[10pt,a4paper]{article}
+
+% Encoding and standard fonts (ATS-friendly)
+\usepackage{fontspec}
+\setmainfont{Arial Unicode MS}
+\setsansfont{Arial Unicode MS}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Compact layout for 2 pages
+\usepackage[a4paper,margin=1.2cm,top=1.3cm,bottom=1.2cm]{geometry}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.5pt}
+\linespread{1.05}
+
+% Hyperlinks + metadata (ATS-friendly)
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Utku Cikmaz – 全栈开发工程师},
+  pdfauthor={Utku Cikmaz},
+  pdfsubject={简历, CV, Utku Cikmaz, 全栈开发工程师},
+  pdfkeywords={全栈开发工程师, React, Vue, JavaScript, Python, Django, 前端, 后端, AI, 数据可视化, 用户体验, 可访问性, 测试驱动开发, 性能优化, 云部署, CI/CD, Git, Docker, Webpack, Vite, Jest, Cypress, Vitest, Supertest, 测试覆盖率, 代码质量, 敏捷方法, Scrum, RESTful APIs, 数据库设计, 微服务, 基于角色的访问控制, 多租户应用},
+  pdfproducer={LaTeX},
+  pdfcreator={LaTeX}
+}
+
+% Minimal grayscale color palette
+\usepackage{xcolor}
+\definecolor{darkgray}{HTML}{2D2D2D}     % Dark gray
+\definecolor{mediumgray}{HTML}{5A5A5A}   % Medium gray
+\definecolor{lightgray}{HTML}{8A8A8A}    % Light gray
+\definecolor{verylightgray}{HTML}{B0B0B0} % Very light gray
+\definecolor{black}{HTML}{000000}        % Black
+
+% Gradient support for name
+\usepackage{tikz}
+\usetikzlibrary{shapes,positioning,calc}
+
+% Simple list styling
+\usepackage{enumitem}
+\setlist[itemize]{
+  leftmargin=10pt,
+  topsep=1.5pt,
+  itemsep=1pt,
+  parsep=0pt,
+  label=\textcolor{mediumgray}{$\bullet$},
+  labelsep=5pt
+}
+
+% Clean section styling
+\usepackage{titlesec}
+\titleformat{\section}
+  {\color{darkgray}\large\bfseries\sffamily}
+  {}
+  {0pt}
+  {}
+  [\vspace{-4pt}\textcolor{verylightgray}{\titlerule[0.8pt]}\vspace{3pt}]
+
+\titlespacing{\section}{0pt}{8pt}{4pt}
+
+% Prevent section breaks
+\usepackage{needspace}
+
+% Compact custom commands
+\newcommand{\Experience}[4]{%
+  \vspace{2pt}
+  \noindent
+  \begin{minipage}[t]{0.70\textwidth}
+    {\normalsize\textbf{\color{darkgray}#3}} \\
+    \textcolor{lightgray}{\small #1}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.28\textwidth}
+    \raggedleft{}
+    \textcolor{mediumgray}{\small\textbf{#4}} \\
+    \textcolor{lightgray}{\small #2}
+  \end{minipage}
+  \vspace{1pt}
+}
+
+\newcommand{\Education}[3]{%
+  \vspace{2pt}
+  \noindent
+  \begin{minipage}[t]{0.70\textwidth}
+    {\normalsize\textbf{\color{darkgray}#1}} \\
+    \textcolor{lightgray}{\small #2}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.28\textwidth}
+    \raggedleft{}
+    \textcolor{mediumgray}{\small\textbf{#3}}
+  \end{minipage}
+  \vspace{1pt}
+}
+
+\newcommand{\Project}[2]{%
+  \vspace{2pt}
+  \noindent{\normalsize\textbf{\color{darkgray}#1}} \\
+  \textcolor{lightgray}{\small #2}
+  \vspace{1pt}
+}
+
+% Simple gradient name using varying shades
+\newcommand{\gradientname}[1]{%
+  \textcolor{darkgray!90}{\Huge\bfseries U}%
+  \textcolor{darkgray!80}{\Huge\bfseries T}%
+  \textcolor{darkgray!70}{\Huge\bfseries K}%
+  \textcolor{darkgray!60}{\Huge\bfseries U}%
+  \textcolor{mediumgray!90}{\Huge\bfseries\space}%
+  \textcolor{mediumgray!80}{\Huge\bfseries C}%
+  \textcolor{mediumgray!70}{\Huge\bfseries I}%
+  \textcolor{mediumgray!60}{\Huge\bfseries K}%
+  \textcolor{mediumgray!50}{\Huge\bfseries M}%
+  \textcolor{lightgray!80}{\Huge\bfseries A}%
+  \textcolor{lightgray!70}{\Huge\bfseries Z}%
+}
+
+\begin{document}
+\color{black}
+\pagestyle{empty}
+
+% Minimal header with gradient name
+\begin{center}
+  \vspace{-3pt}
+  \gradientname{UTKU CIKMAZ}
+  
+  \vspace{4pt}
+  \textcolor{verylightgray}{\rule{0.35\textwidth}{0.6pt}}
+  
+  \vspace{4pt}
+  {\large\color{mediumgray}フルスタック開発者}
+  
+  \vspace{5pt}
+  \begin{tabular}{c}
+    \textcolor{lightgray}{\small Hamburg, Germany} \\[2pt]
+    \href{mailto:utkucikmaz@gmail.com}{\textcolor{darkgray}{utkucikmaz@gmail.com}} \quad
+    \textcolor{verylightgray}{$\bullet$} \quad
+    \href{https://www.utkucikmaz.com}{\textcolor{darkgray}{utkucikmaz.com}} \\[1pt]
+    \href{https://linkedin.com/in/utkucikmaz}{\textcolor{darkgray}{linkedin.com/in/utkucikmaz}} \quad
+    \textcolor{verylightgray}{$\bullet$} \quad
+    \href{https://github.com/utkucikmaz}{\textcolor{darkgray}{github.com/utkucikmaz}}
+  \end{tabular}
+\end{center}
+
+\vspace{1pt}
+
+\section*{专业总结}
+\vspace{0pt}
+\textcolor{darkgray}{%
+结果导向的全栈开发工程师，在构建可扩展、高性能的Web应用程序方面拥有经过验证的专业知识。专精于现代JavaScript生态系统（React、Vue、Next.js）和强大的后端架构（Django、Node.js、NestJS）。在领导技术转型、优化代码库和提供生产就绪解决方案方面拥有经过验证的成功记录。代码质量、测试驱动开发和可访问性标准的坚定倡导者。目前正在开发专注于数据可视化和用户体验卓越性的AI驱动平台。
+}
+\vspace{1pt}
+
+\section*{职业经验}
+
+\Experience{AIlon / ERASON}{德国吕讷堡}{全栈开发工程师}{2024年10月~\textendash~至今}
+\begin{itemize}
+  \item 使用Vue 3、Django REST Framework和Highcharts架构和开发为企业客户服务的生产级AI驱动分析平台
+  \item 工程化处理大规模数据集的高性能数据可视化组件，通过优化技术将渲染时间减少60\%
+  \item 建立确保整个平台视觉一致性的综合设计系统和组件库，将UI开发时间减少40\%
+  \item 使用Vue 3 Composition API、Pinia和TanStack Query实现高级状态管理架构，提高应用程序响应性
+  \item 与产品和设计团队合作进行战略决策，为路线图规划和技术可行性评估做出贡献
+\end{itemize}
+
+\Experience{Arbithub}{美国芝加哥（远程）}{前端Web开发实习生}{2024年1月~\textendash~2024年8月}
+\begin{itemize}
+  \item 主导零停机时间的重要框架迁移（React 17→18、React Router v5→v6、Redux Toolkit、Tailwind CSS v2→v3），将包大小改善25\%并提升开发者体验
+  \item 构建具有高级过滤、防抖和实时更新的企业级搜索功能，用户参与度增加35\%
+  \item 通过ESLint和Prettier建立代码质量标准，将技术债务减少40\%并在整个团队中标准化开发工作流程
+  \item 在敏捷环境中交付功能，与跨职能团队进行日常站会、冲刺规划和代码审查
+\end{itemize}
+
+\Experience{LightUp Digital}{德国柏林（远程）}{全栈开发实习生}{2023年10月~\textendash~2024年1月}
+\begin{itemize}
+  \item 使用TypeScript、依赖注入和模块设计模式通过NestJS设计和实现可扩展的微服务架构
+  \item 使用React和Material-UI开发生产就绪的响应式界面，创建可重用组件库将开发时间减少30\%
+  \item 使用JWT和OAuth 2.0架构安全认证系统，为多租户应用程序实施基于角色的访问控制（RBAC）
+  \item 通过Jest和Supertest建立达到85\%代码覆盖率的综合测试策略，确保可靠性和可维护性
+\end{itemize}
+
+\Experience{Turkish Airlines}{土耳其伊斯坦布尔}{IOCC运营控制官}{2019年3月~\textendash~2020年5月}
+\begin{itemize}
+  \item 在任务关键环境中管理200多个每日航班的实时运营控制，需要高压决策和系统可靠性
+  \item 协调跨职能国际团队，培养强大的沟通和问题解决技能，适用于分布式软件开发
+\end{itemize}
+
+\needspace{6\baselineskip}
+\section*{精选项目}
+
+\Project{酒店中土 --- Web应用程序游戏}{% 具有沉浸式故事叙述和实时多人交互的互动冒险游戏 \textcolor{verylightgray}{|} HTML、Web应用程序、面向对象编程（OOP）、JavaScript、CSS。使用Firebase实现用于游戏评分和排行榜功能的后端服务器架构
+}
+
+\Project{PlantIQ --- 智能植物护理应用程序}{% 生产就绪的植物识别和护理管理系统 \textcolor{verylightgray}{|} JavaScript、Express.js、PlantNet API、Trefle API、Handlebars。构建具有实时植物健康跟踪和个性化护理推荐的响应式移动优先界面
+}
+
+\Project{React电影应用 --- 娱乐发现平台}{% 具有高级过滤和用户设置的功能丰富的电影发现应用程序 \textcolor{verylightgray}{|} React.js、自定义钩子、useReducer、Firebase Auth、Supabase、Cypress E2E测试、TMDB API。实现确保可靠性和可维护性的综合测试覆盖率
+}
+
+\Project{Memoria --- AI增强社交平台}{% 具有AI驱动内容生成的全栈社交网络平台 \textcolor{verylightgray}{|} React.js、Node.js、Express、MongoDB、OpenAI API、Tailwind CSS、JWT认证。实现具有ARIA标签和键盘导航的可访问性优先设计，达到WCAG 2.1 AA合规性
+}
+
+\needspace{5\baselineskip}
+\section*{技术技能}
+
+\noindent
+\textbf{\color{darkgray}前端 \& 框架:} React.js, Vue.js, Next.js, TypeScript, JavaScript (ES6+), HTML5, CSS3 \\
+\textbf{\color{darkgray}后端 \& API:} Python, Django, Django REST Framework, Node.js, Express.js, NestJS, RESTful APIs \\
+\textbf{\color{darkgray}数据库 \& ORMs:} MongoDB, PostgreSQL, Mongoose, Supabase, 数据库设计 \& 优化 \\
+\textbf{\color{darkgray}样式 \& UI:} Tailwind CSS, Sass/SCSS, Styled Components, CSS Modules, Bootstrap, Material-UI \\
+\textbf{\color{darkgray}状态管理:} Redux Toolkit, Pinia, TanStack Query, Context API, Zustand \\
+\textbf{\color{darkgray}测试 \& 质量:} Jest, Cypress, Vitest, Supertest, 测试驱动开发, 代码覆盖率 \\
+\textbf{\color{darkgray}DevOps \& CI/CD:} Git, GitHub Actions, Docker, Webpack, Vite, 构建优化 \\
+\textbf{\color{darkgray}云 \& 服务:} Firebase, Supabase, Vercel, Netlify, AWS S3, 云部署
+
+\needspace{4\baselineskip}
+\section*{核心能力}
+
+\noindent
+\begin{minipage}[t]{0.48\textwidth}
+  \begin{itemize}
+    \item 敏捷 \& Scrum方法
+    \item 跨职能协作
+    \item 代码审查 \& 指导
+    \item 问题解决 \& 调试
+  \end{itemize}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+  \begin{itemize}
+    \item 测试驱动开发（TDD）
+    \item 性能优化
+    \item UI/UX设计原则
+    \item Web可访问性（WCAG 2.1）
+  \end{itemize}
+\end{minipage}
+
+\needspace{6\baselineskip}
+\section*{教育}
+
+\Education{全栈Web开发训练营}{Ironhack --- 远程（400小时强化）}{2023}
+
+\Education{全栈Web开发训练营}{Digi-Homeschooling --- 远程（400小时强化）}{2022}
+
+\Education{中国文学学士}{伊斯坦布尔大学，土耳其伊斯坦布尔}{2016~\textendash~2020}
+
+\Education{社会学学士}{土耳其军事学院，土耳其安卡拉}{2012~\textendash~2015}
+
+\section*{语言}
+
+\vspace{1pt}
+\noindent
+\begin{minipage}[t]{0.24\textwidth}
+  \textcolor{darkgray}{\textbf{土耳其语:}} \\
+  \textcolor{lightgray}{\small 母语}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.24\textwidth}
+  \textcolor{darkgray}{\textbf{英语:}} \\
+  \textcolor{lightgray}{\small 完全职业水平}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.24\textwidth}
+  \textcolor{darkgray}{\textbf{德语:}} \\
+  \textcolor{lightgray}{\small 完全职业水平}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.24\textwidth}
+  \textcolor{darkgray}{\textbf{中文:}} \\
+  \textcolor{lightgray}{\small 有限}
+\end{minipage}
+
+\end{document}

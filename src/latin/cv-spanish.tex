@@ -1,0 +1,276 @@
+\documentclass[10pt,a4paper]{article}
+
+% Encoding and standard fonts (ATS-friendly)
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Compact layout for 2 pages
+\usepackage[a4paper,margin=1.2cm,top=1.3cm,bottom=1.2cm]{geometry}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.5pt}
+\linespread{1.05}
+
+% Hyperlinks + metadata (ATS-friendly)
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+  pdftitle={Utku Cikmaz – Full Stack Developer},
+  pdfauthor={Utku Cikmaz},
+  pdfsubject={Resume, CV, Utku Cikmaz, Full Stack Developer},
+  pdfkeywords={Full Stack Developer, React, Vue, JavaScript, Python, Django, Frontend, Backend, AI, Data Visualization, User Experience, Accessibility, Test-Driven Development, Performance Optimization, Cloud Deployment, CI/CD, Git, Docker, Webpack, Vite, Jest, Cypress, Vitest, Supertest, Test Coverage, Code Quality, Agile Methodologies, Scrum, RESTful APIs, Database Design, Microservices, Role-Based Access Control, Multi-Tenant Applications},
+  pdfproducer={LaTeX},
+  pdfcreator={LaTeX}
+}
+
+% Minimal grayscale color palette
+\usepackage{xcolor}
+\definecolor{darkgray}{HTML}{2D2D2D}     % Dark gray
+\definecolor{mediumgray}{HTML}{5A5A5A}   % Medium gray
+\definecolor{lightgray}{HTML}{8A8A8A}    % Light gray
+\definecolor{verylightgray}{HTML}{B0B0B0} % Very light gray
+\definecolor{black}{HTML}{000000}        % Black
+
+% Gradient support for name
+\usepackage{tikz}
+\usetikzlibrary{shapes,positioning,calc}
+
+% Simple list styling
+\usepackage{enumitem}
+\setlist[itemize]{
+  leftmargin=10pt,
+  topsep=1.5pt,
+  itemsep=1pt,
+  parsep=0pt,
+  label=\textcolor{mediumgray}{$\bullet$},
+  labelsep=5pt
+}
+
+% Clean section styling
+\usepackage{titlesec}
+\titleformat{\section}
+  {\color{darkgray}\large\bfseries\sffamily}
+  {}
+  {0pt}
+  {}
+  [\vspace{-4pt}\textcolor{verylightgray}{\titlerule[0.8pt]}\vspace{3pt}]
+
+\titlespacing{\section}{0pt}{8pt}{4pt}
+
+% Prevent section breaks
+\usepackage{needspace}
+
+% Compact custom commands
+\newcommand{\Experience}[4]{%
+  \vspace{2pt}
+  \noindent
+  \begin{minipage}[t]{0.70\textwidth}
+    {\normalsize\textbf{\color{darkgray}#3}} \\
+    \textcolor{lightgray}{\small #1}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.28\textwidth}
+    \raggedleft
+    \textcolor{mediumgray}{\small\textbf{#4}} \\
+    \textcolor{lightgray}{\small #2}
+  \end{minipage}
+  \vspace{1pt}
+}
+
+\newcommand{\Education}[3]{%
+  \vspace{2pt}
+  \noindent
+  \begin{minipage}[t]{0.70\textwidth}
+    {\normalsize\textbf{\color{darkgray}#1}} \\
+    \textcolor{lightgray}{\small #2}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.28\textwidth}
+    \raggedleft
+    \textcolor{mediumgray}{\small\textbf{#3}}
+  \end{minipage}
+  \vspace{1pt}
+}
+
+\newcommand{\Project}[2]{%
+  \vspace{2pt}
+  \noindent{\normalsize\textbf{\color{darkgray}#1}} \\
+  \textcolor{lightgray}{\small #2}
+  \vspace{1pt}
+}
+
+% Simple gradient name using varying shades
+\newcommand{\gradientname}[1]{%
+  \textcolor{darkgray!90}{\Huge\bfseries U}%
+  \textcolor{darkgray!80}{\Huge\bfseries T}%
+  \textcolor{darkgray!70}{\Huge\bfseries K}%
+  \textcolor{darkgray!60}{\Huge\bfseries U}%
+  \textcolor{mediumgray!90}{\Huge\bfseries\ }%
+  \textcolor{mediumgray!80}{\Huge\bfseries C}%
+  \textcolor{mediumgray!70}{\Huge\bfseries I}%
+  \textcolor{mediumgray!60}{\Huge\bfseries K}%
+  \textcolor{mediumgray!50}{\Huge\bfseries M}%
+  \textcolor{lightgray!80}{\Huge\bfseries A}%
+  \textcolor{lightgray!70}{\Huge\bfseries Z}%
+}
+
+\begin{document}
+\color{black}
+\pagestyle{empty}
+
+% Minimal header with gradient name
+\begin{center}
+  \vspace{-3pt}
+  \gradientname{UTKU CIKMAZ}
+  
+  \vspace{4pt}
+  \textcolor{verylightgray}{\rule{0.35\textwidth}{0.6pt}}
+  
+  \vspace{4pt}
+  {\large\color{mediumgray}Desarrollador Full Stack}
+  
+  \vspace{5pt}
+  \begin{tabular}{c}
+    \textcolor{lightgray}{\small Hamburg, Germany} \\[2pt]
+    \href{mailto:utkucikmaz@gmail.com}{\textcolor{darkgray}{utkucikmaz@gmail.com}} \quad
+    \textcolor{verylightgray}{$\bullet$} \quad
+    \href{https://www.utkucikmaz.com}{\textcolor{darkgray}{utkucikmaz.com}} \\[1pt]
+    \href{https://linkedin.com/in/utkucikmaz}{\textcolor{darkgray}{linkedin.com/in/utkucikmaz}} \quad
+    \textcolor{verylightgray}{$\bullet$} \quad
+    \href{https://github.com/utkucikmaz}{\textcolor{darkgray}{github.com/utkucikmaz}}
+  \end{tabular}
+\end{center}
+
+\vspace{1pt}
+
+\section*{Resumen Profesional}
+\vspace{0pt}
+\textcolor{darkgray}{%
+Desarrollador Full Stack orientado a resultados con experiencia comprobada en la construcción de aplicaciones web escalables y de alto rendimiento. Especializado en ecosistemas JavaScript modernos (React, Vue, Next.js) y arquitecturas backend robustas (Django, Node.js, NestJS). Éxito demostrado en liderar migraciones técnicas, optimizar bases de código y entregar soluciones listas para producción. Fuerte defensor de la calidad del código, desarrollo dirigido por pruebas y estándares de accesibilidad. Actualmente desarrollando plataformas impulsadas por IA con enfoque en visualización de datos y excelencia en experiencia de usuario.
+}
+\vspace{1pt}
+
+\needspace{8\baselineskip}
+\section*{Experiencia Profesional}
+
+\Experience{AIlon / ERASON}{Lüneburg, Germany}{Desarrollador Full Stack}{Oct 2024 -- Presente}
+\begin{itemize}
+  \item Arquitectura y desarrollo de plataforma de análisis impulsada por IA de nivel de producción que sirve a clientes empresariales usando Vue 3, Django REST Framework y Highcharts
+  \item Ingeniería de componentes de visualización de datos de alto rendimiento que procesan conjuntos de datos a gran escala, reduciendo el tiempo de renderizado en 60\% mediante técnicas de optimización
+  \item Establecimiento de un sistema de diseño integral y biblioteca de componentes que garantiza la consistencia visual en toda la plataforma, reduciendo el tiempo de desarrollo de UI en 40\%
+  \item Implementación de arquitectura avanzada de gestión de estado usando Vue 3 Composition API, Pinia y TanStack Query, mejorando la capacidad de respuesta de la aplicación
+  \item Colaboración con equipos de producto y diseño en decisiones estratégicas, contribuyendo a la planificación de la hoja de ruta y evaluaciones de viabilidad técnica
+\end{itemize}
+
+\Experience{Arbithub}{Chicago, USA (Remote)}{Desarrollador Web Frontend Práctico}{Ene 2024 -- Ago 2024}
+\begin{itemize}
+  \item Liderazgo de migración crítica de framework (React 17→18, React Router v5→v6, Redux Toolkit, Tailwind CSS v2→v3) sin tiempo de inactividad, mejorando el tamaño del bundle en 25\% y mejorando la experiencia del desarrollador
+  \item Construcción de funcionalidad de búsqueda de nivel empresarial con filtrado avanzado, debouncing y actualizaciones en tiempo real, aumentando el compromiso del usuario en 35\%
+  \item Establecimiento de estándares de calidad de código con ESLint y Prettier, reduciendo la deuda técnica en 40\% y estandarizando el flujo de trabajo de desarrollo en todo el equipo
+  \item Entrega de características en un entorno Agile, participando en standups diarios, planificación de sprints y revisiones de código con equipos multifuncionales
+\end{itemize}
+
+\Experience{LightUp Digital}{Berlin, Germany (Remote)}{Desarrollador Full Stack Práctico}{Oct 2023 -- Ene 2024}
+\begin{itemize}
+  \item Diseño e implementación de arquitectura de microservicios escalable usando NestJS con TypeScript, inyección de dependencias y patrones de diseño modulares
+  \item Desarrollo de interfaces responsivas listas para producción con React y Material-UI, creando biblioteca de componentes reutilizables que reduce el tiempo de desarrollo en 30\%
+  \item Arquitectura de sistema de autenticación seguro con JWT y OAuth 2.0, implementando control de acceso basado en roles (RBAC) para aplicación multi-tenant
+  \item Establecimiento de estrategia de pruebas integral que logra 85\% de cobertura de código con Jest y Supertest, asegurando confiabilidad y mantenibilidad
+\end{itemize}
+
+\Experience{Turkish Airlines}{Istanbul, Turkey}{Oficial de Control Operativo IOCC}{Mar 2019 -- May 2020}
+\begin{itemize}
+  \item Gestión del control operativo en tiempo real de más de 200 vuelos diarios en un entorno crítico, requiriendo toma de decisiones bajo alta presión y confiabilidad del sistema
+  \item Coordinación de equipos internacionales multifuncionales, desarrollando fuertes habilidades de comunicación y resolución de problemas aplicables al desarrollo de software distribuido
+\end{itemize}
+
+\needspace{6\baselineskip}
+\section*{Proyectos Destacados}
+
+\Project{Hotel Middle Earth — Juego de Aplicación Web}{%
+  Juego de aventura interactivo con narrativa inmersiva e interacciones multijugador en tiempo real \textcolor{verylightgray}{|} HTML, Aplicaciones Web, Programación Orientada a Objetos (OOP), JavaScript, CSS. Implementación de arquitectura de servidor backend con Firebase para puntuación del juego y funcionalidad de clasificación
+}
+
+\Project{PlantIQ — Aplicación Inteligente de Cuidado de Plantas}{%
+  Sistema de gestión de identificación y cuidado de plantas listo para producción \textcolor{verylightgray}{|} JavaScript, Express.js, PlantNet API, Trefle API, Handlebars. Construcción de interfaz responsiva mobile-first con seguimiento de salud de plantas en tiempo real y recomendaciones de cuidado personalizadas
+}
+
+\Project{React Movie App — Plataforma de Descubrimiento de Entretenimiento}{%
+  Aplicación de descubrimiento de películas rica en características con filtrado avanzado y preferencias de usuario \textcolor{verylightgray}{|} React.js, hooks personalizados, useReducer, Firebase Auth, Supabase, pruebas Cypress E2E, TMDB API. Implementación de cobertura de pruebas integral que asegura confiabilidad y mantenibilidad
+}
+
+\Project{Memoria — Plataforma Social Mejorada por IA}{%
+  Plataforma de redes sociales full-stack con generación de contenido impulsada por IA \textcolor{verylightgray}{|} React.js, Node.js, Express, MongoDB, OpenAI API, Tailwind CSS, autenticación JWT. Implementación de diseño centrado en accesibilidad con etiquetas ARIA y navegación por teclado, logrando cumplimiento WCAG 2.1 AA
+}
+
+\needspace{5\baselineskip}
+\section*{Habilidades Técnicas}
+
+\noindent
+\textbf{\color{darkgray}Frontend \& Frameworks:} React.js, Vue.js, Next.js, TypeScript, JavaScript (ES6+), HTML5, CSS3 \\
+\textbf{\color{darkgray}Backend \& APIs:} Python, Django, Django REST Framework, Node.js, Express.js, NestJS, RESTful APIs \\
+\textbf{\color{darkgray}Bases de Datos \& ORMs:} MongoDB, PostgreSQL, Mongoose, Supabase, Diseño de Base de Datos \& Optimización \\
+\textbf{\color{darkgray}Estilos \& UI:} Tailwind CSS, Sass/SCSS, Styled Components, CSS Modules, Bootstrap, Material-UI \\
+\textbf{\color{darkgray}Gestión de Estado:} Redux Toolkit, Pinia, TanStack Query, Context API, Zustand \\
+\textbf{\color{darkgray}Pruebas \& Calidad:} Jest, Cypress, Vitest, Supertest, Desarrollo Dirigido por Pruebas, Cobertura de Código \\
+\textbf{\color{darkgray}DevOps \& CI/CD:} Git, GitHub Actions, Docker, Webpack, Vite, Optimización de Build \\
+\textbf{\color{darkgray}Nube \& Servicios:} Firebase, Supabase, Vercel, Netlify, AWS S3, Despliegue en la Nube
+
+\needspace{4\baselineskip}
+\section*{Competencias Clave}
+
+\noindent
+\begin{minipage}[t]{0.48\textwidth}
+  \begin{itemize}
+    \item Metodologías Agile \& Scrum
+    \item Colaboración Multifuncional
+    \item Revisión de Código \& Mentoría
+    \item Resolución de Problemas \& Depuración
+  \end{itemize}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+  \begin{itemize}
+    \item Desarrollo Dirigido por Pruebas (TDD)
+    \item Optimización de Rendimiento
+    \item Principios de Diseño UI/UX
+    \item Accesibilidad Web (WCAG 2.1)
+  \end{itemize}
+\end{minipage}
+
+\needspace{6\baselineskip}
+\section*{Educación}
+
+\Education{Bootcamp de Desarrollo Web Full Stack}{Ironhack — Remoto (400 horas intensivas)}{2023}
+
+\Education{Bootcamp de Desarrollo Web Full Stack}{Digi-Homeschooling — Remoto (400 horas intensivas)}{2022}
+
+\Education{Licenciatura en Lengua y Literatura China}{Istanbul University, Istanbul, Turkey}{2016 -- 2020}
+
+\Education{Licenciatura en Sociología}{Turkish Military Academy, Ankara, Turkey}{2012 -- 2015}
+
+\section*{Idiomas}
+
+\vspace{1pt}
+\noindent
+\begin{minipage}[t]{0.24\textwidth}
+  \textcolor{darkgray}{\textbf{Turco:}} \\
+  \textcolor{lightgray}{\small Nativo}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.24\textwidth}
+  \textcolor{darkgray}{\textbf{Inglés:}} \\
+  \textcolor{lightgray}{\small Profesional Completo}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.24\textwidth}
+  \textcolor{darkgray}{\textbf{Alemán:}} \\
+  \textcolor{lightgray}{\small Profesional Completo}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.24\textwidth}
+  \textcolor{darkgray}{\textbf{Chino:}} \\
+  \textcolor{lightgray}{\small Limitado}
+\end{minipage}
+
+\end{document}

@@ -1,0 +1,40 @@
+# Git attributes for proper language detection and line endings
+
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# LaTeX files
+*.tex text eol=lf linguist-language=TeX
+*.cls text eol=lf linguist-language=TeX
+*.sty text eol=lf linguist-language=TeX
+*.bib text eol=lf linguist-language=TeX
+
+# Documentation
+*.md text eol=lf linguist-documentation
+*.txt text eol=lf
+README* text eol=lf linguist-documentation
+LICENSE text eol=lf linguist-documentation
+CHANGELOG* text eol=lf linguist-documentation
+CONTRIBUTING* text eol=lf linguist-documentation
+
+# Scripts
+*.sh text eol=lf
+Makefile text eol=lf
+
+# Configuration files
+.gitignore text eol=lf
+.gitattributes text eol=lf
+
+# Binary files
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg binary
+
+# Exclude generated files from language statistics
+output/* linguist-generated
+build/* linguist-generated
+*.pdf linguist-generated
