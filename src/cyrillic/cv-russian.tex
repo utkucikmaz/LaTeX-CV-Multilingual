@@ -2,8 +2,30 @@
 
 % Encoding and standard fonts (ATS-friendly)
 \usepackage{fontspec}
-\setmainfont{Arial Unicode MS}
-\setsansfont{Arial Unicode MS}
+
+% Font fallback system - try multiple fonts for compatibility
+\IfFontExistsTF{Noto Sans}{
+  \setmainfont{Noto Sans}
+  \setsansfont{Noto Sans}
+}{
+  \IfFontExistsTF{Arial Unicode MS}{
+    \setmainfont{Arial Unicode MS}
+    \setsansfont{Arial Unicode MS}
+  }{
+    \IfFontExistsTF{DejaVu Sans}{
+      \setmainfont{DejaVu Sans}
+      \setsansfont{DejaVu Sans}
+    }{
+      \IfFontExistsTF{Liberation Sans}{
+        \setmainfont{Liberation Sans}
+        \setsansfont{Liberation Sans}
+      }{
+        \setmainfont{FreeSans}
+        \setsansfont{FreeSans}
+      }
+    }
+  }
+}
 \renewcommand{\familydefault}{\sfdefault}
 
 % Compact layout for 2 pages

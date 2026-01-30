@@ -2,8 +2,30 @@
 
 % Encoding and standard fonts (ATS-friendly)
 \usepackage{fontspec}
-\setmainfont{Arial Unicode MS}
-\setsansfont{Arial Unicode MS}
+
+% Font fallback system - try multiple fonts for compatibility
+\IfFontExistsTF{Noto Sans CJK JP}{
+  \setmainfont{Noto Sans CJK JP}
+  \setsansfont{Noto Sans CJK JP}
+}{
+  \IfFontExistsTF{Hiragino Sans}{
+    \setmainfont{Hiragino Sans}
+    \setsansfont{Hiragino Sans}
+  }{
+    \IfFontExistsTF{Hiragino Kaku Gothic ProN}{
+      \setmainfont{Hiragino Kaku Gothic ProN}
+      \setsansfont{Hiragino Kaku Gothic ProN}
+    }{
+      \IfFontExistsTF{Arial Unicode MS}{
+        \setmainfont{Arial Unicode MS}
+        \setsansfont{Arial Unicode MS}
+      }{
+        \setmainfont{IPAGothic}
+        \setsansfont{IPAGothic}
+      }
+    }
+  }
+}
 \renewcommand{\familydefault}{\sfdefault}
 
 % Compact layout for 2 pages

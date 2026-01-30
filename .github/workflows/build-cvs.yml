@@ -1,163 +1,166 @@
 name: Build LaTeX CVs
 
 on:
-  push:
-    branches: [ main, develop ]
-  pull_request:
-    branches: [ main ]
-  workflow_dispatch:
+    push:
+        branches: [main, develop]
+    pull_request:
+        branches: [main]
+    workflow_dispatch:
 
 jobs:
-  build-latin:
-    name: Build Latin Script CVs
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      
-    - name: Install LaTeX
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra
-        
-    - name: Create output directory
-      run: mkdir -p output build
-      
-    - name: Build English CV
-      run: pdflatex -interaction=nonstopmode -file-line-error -output-directory=build src/latin/cv-english.tex && mv build/cv-english.pdf output/
-      
-    - name: Build German CV
-      run: pdflatex -interaction=nonstopmode -file-line-error -output-directory=build src/latin/cv-german.tex && mv build/cv-german.pdf output/
-      
-    - name: Build French CV
-      run: pdflatex -interaction=nonstopmode -file-line-error -output-directory=build src/latin/cv-french.tex && mv build/cv-french.pdf output/
-      
-    - name: Build Spanish CV
-      run: pdflatex -interaction=nonstopmode -file-line-error -output-directory=build src/latin/cv-spanish.tex && mv build/cv-spanish.pdf output/
-      
-    - name: Build Portuguese CV
-      run: pdflatex -interaction=nonstopmode -file-line-error -output-directory=build src/latin/cv-portuguese.tex && mv build/cv-portuguese.pdf output/
-      
-    - name: Build Dutch CV
-      run: pdflatex -interaction=nonstopmode -file-line-error -output-directory=build src/latin/cv-dutch.tex && mv build/cv-dutch.pdf output/
-      
-    - name: Build Turkish CV
-      run: pdflatex -interaction=nonstopmode -file-line-error -output-directory=build src/latin/cv-turkish.tex && mv build/cv-turkish.pdf output/
-      
-    - name: Upload Latin CVs
-      uses: actions/upload-artifact@v4
-      with:
-        name: latin-cvs
-        path: output/*.pdf
-        retention-days: 30
+    build-latin:
+        name: Build Latin Script CVs
+        runs-on: ubuntu-latest
 
-  build-cjk:
-    name: Build CJK CVs
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      
-    - name: Install XeLaTeX and CJK fonts
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-fonts-extra
-        sudo apt-get install -y fonts-noto-cjk fonts-noto-cjk-extra
-        
-    - name: Create output directory
-      run: mkdir -p output build
-      
-    - name: Build Chinese CV
-      run: xelatex -interaction=nonstopmode -file-line-error -output-directory=build src/cjk/cv-chinese.tex && mv build/cv-chinese.pdf output/
-      
-    - name: Build Japanese CV
-      run: xelatex -interaction=nonstopmode -file-line-error -output-directory=build src/cjk/cv-japanese.tex && mv build/cv-japanese.pdf output/
-      
-    - name: Build Korean CV
-      run: xelatex -interaction=nonstopmode -file-line-error -output-directory=build src/cjk/cv-korean.tex && mv build/cv-korean.pdf output/
-      
-    - name: Upload CJK CVs
-      uses: actions/upload-artifact@v4
-      with:
-        name: cjk-cvs
-        path: output/*.pdf
-        retention-days: 30
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
 
-  build-rtl:
-    name: Build RTL CVs
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      
-    - name: Install XeLaTeX and Arabic fonts
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-fonts-extra
-        sudo apt-get install -y fonts-noto fonts-liberation
-        
-    - name: Create output directory
-      run: mkdir -p output build
-      
-    - name: Build Arabic CV
-      run: xelatex -interaction=nonstopmode -file-line-error -output-directory=build src/rtl/cv-arabic.tex && mv build/cv-arabic.pdf output/
-      
-    - name: Upload RTL CVs
-      uses: actions/upload-artifact@v4
-      with:
-        name: rtl-cvs
-        path: output/*.pdf
-        retention-days: 30
+            - name: Install LaTeX
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-fonts-recommended texlive-fonts-extra
 
-  build-cyrillic:
-    name: Build Cyrillic CVs
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      
-    - name: Install XeLaTeX and Cyrillic fonts
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-fonts-extra
-        sudo apt-get install -y fonts-liberation
-        
-    - name: Create output directory
-      run: mkdir -p output build
-      
-    - name: Build Russian CV
-      run: xelatex -interaction=nonstopmode -file-line-error -output-directory=build src/cyrillic/cv-russian.tex && mv build/cv-russian.pdf output/
-      
-    - name: Upload Cyrillic CVs
-      uses: actions/upload-artifact@v4
-      with:
-        name: cyrillic-cvs
-        path: output/*.pdf
-        retention-days: 30
+            - name: Create output directory
+              run: mkdir -p output build
 
-  combine-artifacts:
-    name: Combine All CVs
-    runs-on: ubuntu-latest
-    needs: [build-latin, build-cjk, build-rtl, build-cyrillic]
-    
-    steps:
-    - name: Download all artifacts
-      uses: actions/download-artifact@v4
-      with:
-        path: all-cvs
-        
-    - name: Combine PDFs
-      run: |
-        mkdir -p combined
-        find all-cvs -name "*.pdf" -exec cp {} combined/ \;
-        
-    - name: Upload combined CVs
-      uses: actions/upload-artifact@v4
-      with:
-        name: all-cvs-combined
-        path: combined/*.pdf
-        retention-days: 90
+            - name: Build English CV
+              run: pdflatex -interaction=nonstopmode -file-line-error -output-directory=build src/latin/cv-english.tex && mv build/cv-english.pdf output/
+
+            - name: Build German CV
+              run: pdflatex -interaction=nonstopmode -file-line-error -output-directory=build src/latin/cv-german.tex && mv build/cv-german.pdf output/
+
+            - name: Build French CV
+              run: pdflatex -interaction=nonstopmode -file-line-error -output-directory=build src/latin/cv-french.tex && mv build/cv-french.pdf output/
+
+            - name: Build Spanish CV
+              run: pdflatex -interaction=nonstopmode -file-line-error -output-directory=build src/latin/cv-spanish.tex && mv build/cv-spanish.pdf output/
+
+            - name: Build Portuguese CV
+              run: pdflatex -interaction=nonstopmode -file-line-error -output-directory=build src/latin/cv-portuguese.tex && mv build/cv-portuguese.pdf output/
+
+            - name: Build Dutch CV
+              run: pdflatex -interaction=nonstopmode -file-line-error -output-directory=build src/latin/cv-dutch.tex && mv build/cv-dutch.pdf output/
+
+            - name: Build Turkish CV
+              run: pdflatex -interaction=nonstopmode -file-line-error -output-directory=build src/latin/cv-turkish.tex && mv build/cv-turkish.pdf output/
+
+            - name: Upload Latin CVs
+              uses: actions/upload-artifact@v4
+              with:
+                  name: latin-cvs
+                  path: output/*.pdf
+                  retention-days: 30
+
+    build-cjk:
+        name: Build CJK CVs
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Install XeLaTeX and CJK fonts
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-fonts-extra texlive-lang-chinese texlive-lang-japanese texlive-lang-korean
+                  sudo apt-get install -y fonts-noto-cjk fonts-noto-cjk-extra fonts-arphic-ukai fonts-arphic-uming fonts-ipafont-gothic fonts-ipafont-mincho fonts-unfonts-core
+                  sudo fc-cache -fv
+
+            - name: Create output directory
+              run: mkdir -p output build
+
+            - name: Build Chinese CV
+              run: xelatex -interaction=nonstopmode -file-line-error -output-directory=build src/cjk/cv-chinese.tex && mv build/cv-chinese.pdf output/ || (cat build/cv-chinese.log && exit 1)
+
+            - name: Build Japanese CV
+              run: xelatex -interaction=nonstopmode -file-line-error -output-directory=build src/cjk/cv-japanese.tex && mv build/cv-japanese.pdf output/ || (cat build/cv-japanese.log && exit 1)
+
+            - name: Build Korean CV
+              run: xelatex -interaction=nonstopmode -file-line-error -output-directory=build src/cjk/cv-korean.tex && mv build/cv-korean.pdf output/ || (cat build/cv-korean.log && exit 1)
+
+            - name: Upload CJK CVs
+              uses: actions/upload-artifact@v4
+              with:
+                  name: cjk-cvs
+                  path: output/*.pdf
+                  retention-days: 30
+
+    build-rtl:
+        name: Build RTL CVs
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Install XeLaTeX and Arabic fonts
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-fonts-extra texlive-lang-arabic
+                  sudo apt-get install -y fonts-noto fonts-noto-naskh-arabic fonts-liberation fonts-arabeyes
+                  sudo fc-cache -fv
+
+            - name: Create output directory
+              run: mkdir -p output build
+
+            - name: Build Arabic CV
+              run: xelatex -interaction=nonstopmode -file-line-error -output-directory=build src/rtl/cv-arabic.tex && mv build/cv-arabic.pdf output/ || (cat build/cv-arabic.log && exit 1)
+
+            - name: Upload RTL CVs
+              uses: actions/upload-artifact@v4
+              with:
+                  name: rtl-cvs
+                  path: output/*.pdf
+                  retention-days: 30
+
+    build-cyrillic:
+        name: Build Cyrillic CVs
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            - name: Install XeLaTeX and Cyrillic fonts
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y texlive-xetex texlive-fonts-recommended texlive-fonts-extra texlive-lang-cyrillic
+                  sudo apt-get install -y fonts-liberation fonts-dejavu fonts-freefont-ttf fonts-noto
+                  sudo fc-cache -fv
+
+            - name: Create output directory
+              run: mkdir -p output build
+
+            - name: Build Russian CV
+              run: xelatex -interaction=nonstopmode -file-line-error -output-directory=build src/cyrillic/cv-russian.tex && mv build/cv-russian.pdf output/ || (cat build/cv-russian.log && exit 1)
+
+            - name: Upload Cyrillic CVs
+              uses: actions/upload-artifact@v4
+              with:
+                  name: cyrillic-cvs
+                  path: output/*.pdf
+                  retention-days: 30
+
+    combine-artifacts:
+        name: Combine All CVs
+        runs-on: ubuntu-latest
+        needs: [build-latin, build-cjk, build-rtl, build-cyrillic]
+
+        steps:
+            - name: Download all artifacts
+              uses: actions/download-artifact@v4
+              with:
+                  path: all-cvs
+
+            - name: Combine PDFs
+              run: |
+                  mkdir -p combined
+                  find all-cvs -name "*.pdf" -exec cp {} combined/ \;
+
+            - name: Upload combined CVs
+              uses: actions/upload-artifact@v4
+              with:
+                  name: all-cvs-combined
+                  path: combined/*.pdf
+                  retention-days: 90

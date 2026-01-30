@@ -2,8 +2,30 @@
 
 % Encoding and standard fonts (ATS-friendly)
 \usepackage{fontspec}
-\setmainfont{Arial Unicode MS}
-\setsansfont{Arial Unicode MS}
+
+% Font fallback system - try multiple fonts for compatibility
+\IfFontExistsTF{Noto Sans CJK SC}{
+  \setmainfont{Noto Sans CJK SC}
+  \setsansfont{Noto Sans CJK SC}
+}{
+  \IfFontExistsTF{PingFang SC}{
+    \setmainfont{PingFang SC}
+    \setsansfont{PingFang SC}
+  }{
+    \IfFontExistsTF{STHeiti}{
+      \setmainfont{STHeiti}
+      \setsansfont{STHeiti}
+    }{
+      \IfFontExistsTF{Arial Unicode MS}{
+        \setmainfont{Arial Unicode MS}
+        \setsansfont{Arial Unicode MS}
+      }{
+        \setmainfont{SimHei}
+        \setsansfont{SimHei}
+      }
+    }
+  }
+}
 \renewcommand{\familydefault}{\sfdefault}
 
 % Compact layout for 2 pages
